@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Bloquear lockfiles ajenos a pnpm
+        run: |
+          if [ -f package-lock.json ] || [ -f yarn.lock ]; then
+            echo "::error::Este repositorio usa pnpm. Elimina package-lock.json / yarn.lock y usa 'pnpm add' en lugar de 'npm install'."
+            exit 1
+          fi
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      # --frozen-lockfile: falla si pnpm-lock.yaml no coincide con package.json
+      # (es decir, si alguien agregó dependencias sin actualizar el lockfile)
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+
+      - name: Compilar
+        run: pnpm build
+
+      - name: Pruebas unitarias (dominio y casos de uso)
+        run: pnpm test
+
+      - name: Pruebas end-to-end (API completa)
+        run: pnpm run test:e2e

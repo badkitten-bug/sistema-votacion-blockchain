@@ -1,11 +1,13 @@
 {
-  "name": "sistema-votacion-blockchain",
+  "name": "certichain",
   "version": "0.0.1",
-  "description": "",
+  "description": "Sistema de registro y verificación de certificados académicos en blockchain — Arquitectura Onion",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "packageManager": "pnpm@11.5.3",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
