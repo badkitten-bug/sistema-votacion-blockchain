@@ -1,0 +1,25 @@
+# dependencias
+node_modules/
+
+# compilados
+dist/
+build/
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# entorno
+.env
+.env.*
+
+# cobertura de tests
+coverage/
+.nyc_output/
+
+# IDE / SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
