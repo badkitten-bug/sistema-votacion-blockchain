@@ -7,7 +7,7 @@
 | **Curso** | Arquitectura de Software |
 | **Arquitectura aplicada** | Onion Architecture |
 | **Stack** | TypeScript + NestJS |
-| **Equipo** | Steve Gómez, [Integrante 2], [Integrante 3] |
+| **Equipo** | Steve Gómez, Erickson Soto, [Integrante 3] |
 | **Fecha** | Julio de 2026 |
 
 ---
